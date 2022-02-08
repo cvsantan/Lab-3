@@ -71,7 +71,7 @@ while True:
             print(ser.readline().decode('ascii'))
 
     elif state == 1: # data collection
-        if time.time() - startTime > 1.5:
+        if time.time() - startTime > 2.5:
             while ser.in_waiting != 0:
                 csvList += ser.read().decode()
             if ser.in_waiting == 0:
@@ -80,9 +80,11 @@ while True:
             startTime = time.time()
             
     elif state == 2:
+#         print(csvList)
         try:
             splitCSV = csvList.split('|')
-            splitCSV[0] = splitCSV[0].strip('g\r\n')
+
+#             splitCSV[0] = splitCSV[0].strip('g\r\n')
             timeValsAppend = splitCSV[0].split(',')
             refValsAppend = splitCSV[1].split(',')
             measValsAppend = splitCSV[2].split(',')
@@ -111,7 +113,7 @@ while True:
 #             print(refVals)              
 #             print(measVals)
             csvList = ''
-        except:
+        except ValueError: 
             pass
         state = 0
         
@@ -126,7 +128,7 @@ while True:
 #             ax.yaxis.set_major_locator(ticker.MultipleLocator(y_tick_spacing))
             myPlot.xlabel('Time (ms)')                     # sets axes labels
             myPlot.ylabel('Position (degrees)')
-            myPlot.legend()                                     # turns on legend
+#             myPlot.legend()                                     # turns on legend
             myPlot.show()
             timeVals = []
             refVals = []
