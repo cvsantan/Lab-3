@@ -28,7 +28,7 @@ def cmdsMsg():
     print('  S / s   | Send data to serial and reset.')
     print('  X / X   | Set value of Kp')
 
-ser = serial.Serial(port='COM8',baudrate=115273,timeout=1)
+ser = serial.Serial(port='COM5',baudrate=115273,timeout=1)
 
 startTime = time.time()
 state = 0
