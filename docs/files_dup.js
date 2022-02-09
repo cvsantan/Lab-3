@@ -1,6 +1,9 @@
 var files_dup =
 [
     [ "cotask.py", "cotask_8py.html", "cotask_8py" ],
+    [ "L3ClosedLoop.py", "_l3_closed_loop_8py.html", [
+      [ "L3ClosedLoop.ClosedLoop", "class_l3_closed_loop_1_1_closed_loop.html", "class_l3_closed_loop_1_1_closed_loop" ]
+    ] ],
     [ "L3EncoderClass.py", "_l3_encoder_class_8py.html", [
       [ "L3EncoderClass.EncoderClass", "class_l3_encoder_class_1_1_encoder_class.html", "class_l3_encoder_class_1_1_encoder_class" ]
     ] ],

@@ -43,7 +43,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_l3_encoder_class_8py.html"
+"_l3_closed_loop_8py.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
