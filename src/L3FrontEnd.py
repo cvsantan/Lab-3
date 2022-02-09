@@ -26,7 +26,6 @@ def cmdsMsg():
     print('\nCHARACTER | ACTION')
     print('  G / g   | Step response activate.')
     print('  S / s   | Send data to serial and reset.')
-    print('  X / X   | Set value of Kp')
 
 ser = serial.Serial(port='COM5',baudrate=115273,timeout=1)
 
