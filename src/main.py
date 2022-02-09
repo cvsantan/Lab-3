@@ -15,19 +15,19 @@ import utime
 import cotask
 import task_share
 
-##
+## Serial bus used to communicate with PC
 myUSB = USB_VCP()
-##
+## Encoder 1 Object
 testEncoder_1 = EncoderClass(pyb.Pin.board.PB6, pyb.Pin.board.PB7, 4)
-##
+## Encoder 2 Object
 testEncoder_2 = EncoderClass(pyb.Pin.board.PC6, pyb.Pin.board.PC7, 8)
-##
+## Motor 1 Objcet
 testMotor_1 = MotorDriver(pyb.Pin.board.PA10, pyb.Pin.board.PB4, pyb.Pin.board.PB5, 3)
-##
+## Motor 2 Object
 testMotor_2 = MotorDriver(pyb.Pin.board.PC1, pyb.Pin.board.PA0, pyb.Pin.board.PA1, 5)
-##
+## Closed Loop Controller Object for Motor 1
 testLoop_1 = ClosedLoop(0.92)
-##
+## Closed Loop Controller Object for Motor 2
 testLoop_2 = ClosedLoop(0.92)
 
 def key_input():
@@ -83,11 +83,7 @@ def mot_2 ():
             ref_2 = 360
             pos_2 = 0
             duty_2 = 0
-            stepTime_2 = utime.ticks_ms()       
-            time_diff = utime.ticks_diff(utime.ticks_ms(), stepTime_2)
             while not ref_pos.full():
-                time_diff = utime.ticks_diff(utime.ticks_ms(), stepTime_2)
-                ref_pos2.put(int(ref_2))
                 pos_2 = testEncoder_2.update()
                 duty_2 = testLoop_2.update(ref_2, pos_2, 0, saveData=False)
                 testMotor_2.set_duty_cycle(duty_2)
@@ -139,27 +135,26 @@ def show_queue():
         
 if __name__ == '__main__':
 
-    ##
+    ## Queue used to store positional values of motor 1
     pos = task_share.Queue ('L', 100, thread_protect = False, overwrite = False, name = "pos")
-    ##
+    ## Queue used to store the reference position of motor 1
     ref_pos = task_share.Queue ('L', 100, thread_protect = False, overwrite = False, name = "ref_pos")
-    ##
+    ## Queue used to share the time elapsed between runs of gthe controller
     time = task_share.Queue ('L', 100, thread_protect = False, overwrite = False, name = "time")
     
-    ref_pos2 = task_share.Queue ('L', 100, thread_protect = False, overwrite = False, name = "ref_pos2")
     
-    ##
+    ## Shared flag variable used to indicate when a keyboard input has been made
     key_flag = task_share.Share ('h', thread_protect = False, name = "key_flag")
-    ##
+    ## Shared flag variable used to indicate when the queue is full
     list_flag = task_share.Share ('h', thread_protect = False, name = "list_flag")
     
-    ##
+    ## Creates key_input task
     task_0 = cotask.Task(key_input, name = 'Task_0', priority = 3, period = 10, profile=True, trace=False)
-    ##
-    task_1 = cotask.Task(mot_1, name = 'Task_1', priority = 2, period = 10, profile=True, trace=False)
-    ##
-    task_2 = cotask.Task(mot_2, name = 'Task_2', priority = 2, period = 10, profile=True, trace=False)
-    ##
+    ## Creates mot_1 task
+    task_1 = cotask.Task(mot_1, name = 'Task_1', priority = 2, period = 12, profile=True, trace=False)
+    ## Creates mot_2 task
+    task_2 = cotask.Task(mot_2, name = 'Task_2', priority = 2, period = 12, profile=True, trace=False)
+    ## Creates show_queue task
     task_3 = cotask.Task(show_queue, name = 'Task_3', priority = 1, period = 10, profile=True, trace=False)
     
     cotask.task_list.append(task_0)
