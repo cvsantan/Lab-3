@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lact_0',['lAct',['../class_l3_closed_loop_1_1_closed_loop.html#aaf88d00d105e4df08a3a013a76f8690d',1,'L3ClosedLoop::ClosedLoop']]]
+  ['kp_0',['Kp',['../class_l3_closed_loop_1_1_closed_loop.html#a22284db559dc30072181fce6d4fba86d',1,'L3ClosedLoop::ClosedLoop']]]
 ];

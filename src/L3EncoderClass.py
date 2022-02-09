@@ -1,5 +1,5 @@
 '''!
-@file       Lab1EncoderClass.py
+@file       L3EncoderClass.py
 @brief      Class for reading from an encoder
 @details    Class that initializes an encoder given input pins and a timer.
             Contains methods to zero and update (read from) the encoder.

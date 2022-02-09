@@ -1,5 +1,5 @@
 '''!
-@file       Lab1MotorDriver.py
+@file       L3MotorDriver.py
 @brief      Class for controlling a motor
 @details    Class that initializes a motor given I/O pins and a timer.
             Contains methods to set motor power from 0% to 100% using

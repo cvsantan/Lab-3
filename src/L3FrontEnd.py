@@ -1,5 +1,5 @@
 '''!
-@file       Lab2FrontEnd.py
+@file       L3FrontEnd.py
 @brief      
 @details    
 @author     Jakob Frabosilio, Ayden Carbaugh, Cesar Santana

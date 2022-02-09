@@ -1,5 +1,5 @@
 '''!
-@file       Lab2ClosedLoop.py
+@file       L2ClosedLoop.py
 @brief      Class for creating a proportional controller
 @details    Class that initializes a proportional closed-loop controller.
             Contains methods to update actuation value
